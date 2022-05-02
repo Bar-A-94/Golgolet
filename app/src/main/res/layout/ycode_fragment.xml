@@ -9,27 +9,27 @@
             name="ycodeViewModel"
             type="com.example.skullwarrior.ycode.YcodeViewModel" />
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ycode.YcodeFragment">
 
-
-    <TextView
-        style="@style/InsideStyle"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/y_code_introduction"
-        app:layout_constraintBottom_toTopOf="@id/y_code_counter" />
+        android:layout_height="match_parent"
+        tools:context=".ycode.YcodeFragment">
 
-    <TextView
-        android:id="@+id/y_code_counter"
-        style="@style/InsideStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@{ycodeViewModel.currentTimeString}"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            style="@style/InsideStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/y_code_introduction"
+            app:layout_constraintBottom_toTopOf="@id/y_code_counter" />
+
+        <TextView
+            android:id="@+id/y_code_counter"
+            style="@style/InsideStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{ycodeViewModel.currentTimeString}"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

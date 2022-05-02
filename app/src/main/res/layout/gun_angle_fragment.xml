@@ -1,13 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".gunangle.GunAngleFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <data>
+
+        <variable
+            name="gunAngleViewModel"
+            type="com.example.skullwarrior.gunangle.GunAngleViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="TO DO" />
+        tools:context=".ycode.YcodeFragment">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/gun_angle_introduction"
+            style="@style/InsideStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gun_angle_introduction"
+            android:textSize="30sp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/velocity"
+            style="@style/InsideStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/velocity"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/gun_angle_introduction"
+            tools:layout_editor_absoluteX="0dp" />
+
+
+        <TextView
+            android:id="@+id/shooter_velocity"
+            style="@style/InsideStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Shooter velocity"
+            app:layout_constraintTop_toBottomOf="@+id/velocity" />
+
+        <EditText
+            android:id="@+id/shooter_velocity_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shooter_velocity" />
+
+        <TextView
+            android:id="@+id/victim_velocity"
+            style="@style/InsideStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Victim velocity"
+            app:layout_constraintTop_toBottomOf="@id/shooter_velocity_input" />
+
+        <EditText
+            android:id="@+id/victim_velocity_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/victim_velocity" />
+
+        <TextView
+            android:id="@+id/closing_velocity"
+            style="@style/InsideStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Closing speed (knots)"
+            app:layout_constraintTop_toBottomOf="@id/victim_velocity_input" />
+
+        <EditText
+            android:id="@+id/closing_velocity_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/closing_velocity" />
+
+        <TextView
+            android:id="@+id/altitude_intro"
+            style="@style/InsideStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/altitude"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/closing_velocity_input"
+            tools:layout_editor_absoluteX="27dp" />
+
+        <TextView
+            android:id="@+id/altitude"
+            style="@style/InsideStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Altitude (feet)"
+            app:layout_constraintTop_toBottomOf="@+id/altitude_intro"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <EditText
+            android:id="@+id/altitude_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/altitude" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/altitude_input">
+
+            <Button
+                android:id="@+id/button"
+                style="@style/TabStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calculate!"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/altitude_input" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="24dp"></Space>
+
+            <TextView
+                android:id="@+id/angle_intro"
+                style="@style/InsideStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gun angle equals to:"
+                app:layout_constraintBottom_toTopOf="@+id/angle"
+                tools:layout_editor_absoluteX="0dp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="24dp"></Space>
+
+            <TextView
+                android:id="@+id/angle"
+                style="@style/InsideStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/gun_degrees"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout_editor_absoluteX="0dp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

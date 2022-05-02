@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">SkullWarrior</string>
     <string name="y_code_introduction">The next Y-code pulse is in</string>
+    <string name="gun_angle_introduction">Fill in the data</string>
+    <string name="velocity">*Velocity can written in Mach or Knots</string>
+    <string name="altitude">*Altitude required only in Mach case</string>
+    <string name="gun_degrees">%d degrees</string>
+
 </resources>

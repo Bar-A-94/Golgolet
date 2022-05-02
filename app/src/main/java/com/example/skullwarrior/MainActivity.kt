@@ -24,9 +24,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpTab(){
         val adapter = ViewPagerAdapter(supportFragmentManager)
+        adapter.addFragment(YcodeFragment(), "Y-Code")
         adapter.addFragment(GunAngleFragment(), "Gun Angle")
         adapter.addFragment(HeverTipFragment(), "Hever Tip")
-        adapter.addFragment(YcodeFragment(), "Y-Code")
         binding.viewPager.adapter = adapter
         binding.tabs.setupWithViewPager(binding.viewPager)
 
