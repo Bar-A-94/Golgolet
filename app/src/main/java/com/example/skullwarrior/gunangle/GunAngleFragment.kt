@@ -20,9 +20,6 @@ class GunAngleFragment : Fragment() {
         return inflater.inflate(R.layout.gun_angle_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        // TODO: Use the ViewModel
-    }
+
 
 }
