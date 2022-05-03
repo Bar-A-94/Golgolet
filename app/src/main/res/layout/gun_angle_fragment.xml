@@ -163,7 +163,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/gun_degrees"
-                android:visibility="invisible"
+                android:enabled="@{gunAngleViewModel.angleVisible}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 tools:layout_editor_absoluteX="0dp" />
         </LinearLayout>
