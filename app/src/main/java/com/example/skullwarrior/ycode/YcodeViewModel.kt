@@ -32,7 +32,7 @@ class YcodeViewModel : ViewModel() {
     }
 
     init {
-        val first = 750000 - (System.currentTimeMillis() - 1640995200000) % 750000
+        val first = 750000 - (System.currentTimeMillis() - 1640995005000L) % 750000
         timer = object : CountDownTimer(first, ONE_SECOND) {
             override fun onTick(millisUntilFinished: Long) {
                 _currentTime.value = (millisUntilFinished / ONE_SECOND)

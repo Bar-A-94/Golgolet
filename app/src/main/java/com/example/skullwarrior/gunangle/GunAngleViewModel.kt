@@ -6,6 +6,7 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import kotlin.math.PI
 import kotlin.math.acos
+import kotlin.math.round
 
 class GunAngleViewModel : ViewModel() {
     var TASShooterSpeed: Float = 0F
@@ -36,6 +37,6 @@ class GunAngleViewModel : ViewModel() {
         }
         val aCosInside: Float = (closingSpeed - TASShooterSpeed) / TASVictimSpeed
         val rad = acos(aCosInside)
-        _angle.value = (rad * 180 / PI).toString()
+        _angle.value = (round((180 - rad * 180 / PI) * 100) / 100).toString()
     }
 }
