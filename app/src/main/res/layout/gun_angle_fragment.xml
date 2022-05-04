@@ -13,14 +13,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ycode.YcodeFragment">
+        tools:context=".gunangle.GunAngleFragment">
 
         <TextView
             android:id="@+id/gun_angle_introduction"
             style="@style/InsideStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/gun_angle_introduction"
+            android:text="@string/introduction"
             android:textSize="30sp"
             app:layout_constraintTop_toTopOf="parent" />
 

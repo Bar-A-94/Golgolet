@@ -1,15 +1,23 @@
 <resources>
     <string name="app_name">SkullWarrior</string>
     <string name="y_code_introduction">The next Y-code pulse is in</string>
-    <string name="gun_angle_introduction">Fill in the data</string>
+    <string name="introduction">Fill in the data</string>
     <string name="velocity">*Velocity can written in Mach or Knots</string>
     <string name="altitude">*Altitude required only in Mach case</string>
-    <string name="gun_degrees">%d degrees</string>
     <string name="gun_angle_equals_to">Gun angle equals to:</string>
     <string name="calculate">Calculate!</string>
     <string name="altitude_feet">Altitude (feet)</string>
     <string name="closing_speed_knots">Closing speed (knots)</string>
     <string name="victim_velocity">Victim velocity</string>
     <string name="shooter_velocity">Shooter velocity</string>
+    <string name="amount_to_pay">Amount to pay (ILS)</string>
+    <string name="tip_percents">Tip percents (%)</string>
+    <string name="number_of_non_hever_payers">Number of non-Hever payers:</string>
+    <string name="amount_to_pay_per_type">Amount to pay per typer:</string>
+    <string name="tip_amount">Tip amount:</string>
+    <string name="number_of_payers">Number of payers</string>
+    <string name="split_for_the_mixed_payment">Split for the mixed payment:</string>
+    <string name="hever">Hever</string>
+    <string name="card">Card</string>
 
 </resources>
