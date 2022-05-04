@@ -9,8 +9,8 @@ import kotlin.math.acos
 import kotlin.math.round
 
 class GunAngleViewModel : ViewModel() {
-    var TASShooterSpeed: Float = 0F
-    var TASVictimSpeed: Float = 0F
+    private var tasShooterSpeed: Float = 0F
+    private var tasVictimSpeed: Float = 0F
     private val _angle = MutableLiveData<String>()
     val angle: LiveData<String>
         get() = _angle
@@ -25,17 +25,17 @@ class GunAngleViewModel : ViewModel() {
         closingSpeed: Float
     ) {
 
-        if (shooterSpeed < 2) {
-            TASShooterSpeed = shooterSpeed * 630
+        tasShooterSpeed = if (shooterSpeed < 2) {
+            shooterSpeed * 630
         } else {
-            TASShooterSpeed = shooterSpeed + altitude * 5 / 1000
+            shooterSpeed + altitude * 5 / 1000
         }
-        if (victimSpeed < 2) {
-            TASVictimSpeed = victimSpeed * 630
+        tasVictimSpeed = if (victimSpeed < 2) {
+            victimSpeed * 630
         } else {
-            TASVictimSpeed = victimSpeed + altitude * 5 / 1000
+            victimSpeed + altitude * 5 / 1000
         }
-        val aCosInside: Float = (closingSpeed - TASShooterSpeed) / TASVictimSpeed
+        val aCosInside: Float = (closingSpeed - tasShooterSpeed) / tasVictimSpeed
         val rad = acos(aCosInside)
         _angle.value = (round((180 - rad * 180 / PI) * 100) / 100).toString()
     }

@@ -11,8 +11,6 @@ class YcodeViewModel : ViewModel() {
     companion object {
         // These represent different important times in the game, such as game length.
 
-        private const val DONE = 0L
-
         // This is the number of milliseconds in a second
         private const val ONE_SECOND = 1000L
 
@@ -24,7 +22,7 @@ class YcodeViewModel : ViewModel() {
     private var timer: CountDownTimer
 
     private val _currentTime = MutableLiveData<Long>()
-    val currentTime: LiveData<Long>
+    private val currentTime: LiveData<Long>
         get() = _currentTime
 
     val currentTimeString = Transformations.map(currentTime) { time ->

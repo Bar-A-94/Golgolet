@@ -40,7 +40,7 @@
             style="@style/InsideStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Shooter velocity"
+            android:text="@string/shooter_velocity"
             app:layout_constraintTop_toBottomOf="@+id/velocity" />
 
         <EditText
@@ -52,14 +52,15 @@
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/shooter_velocity" />
+            app:layout_constraintTop_toBottomOf="@+id/shooter_velocity"
+            tools:ignore="Autofill,LabelFor" />
 
         <TextView
             android:id="@+id/victim_velocity"
             style="@style/InsideStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Victim velocity"
+            android:text="@string/victim_velocity"
             app:layout_constraintTop_toBottomOf="@id/shooter_velocity_input" />
 
         <EditText
@@ -71,14 +72,15 @@
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/victim_velocity" />
+            app:layout_constraintTop_toBottomOf="@+id/victim_velocity"
+            tools:ignore="Autofill,LabelFor" />
 
         <TextView
             android:id="@+id/closing_velocity"
             style="@style/InsideStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Closing speed (knots)"
+            android:text="@string/closing_speed_knots"
             app:layout_constraintTop_toBottomOf="@id/victim_velocity_input" />
 
         <EditText
@@ -90,7 +92,8 @@
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/closing_velocity" />
+            app:layout_constraintTop_toBottomOf="@+id/closing_velocity"
+            tools:ignore="Autofill,LabelFor" />
 
         <TextView
             android:id="@+id/altitude_intro"
@@ -107,7 +110,7 @@
             style="@style/InsideStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Altitude (feet)"
+            android:text="@string/altitude_feet"
             app:layout_constraintTop_toBottomOf="@+id/altitude_intro"
             tools:layout_editor_absoluteX="0dp" />
 
@@ -120,7 +123,8 @@
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/altitude" />
+            app:layout_constraintTop_toBottomOf="@+id/altitude"
+            tools:ignore="Autofill,LabelFor" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -135,27 +139,27 @@
                 style="@style/TabStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Calculate!"
+                android:text="@string/calculate"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/altitude_input" />
 
             <Space
                 android:layout_width="0dp"
-                android:layout_height="24dp"></Space>
+                android:layout_height="24dp" />
 
             <TextView
                 android:id="@+id/angle_intro"
                 style="@style/InsideStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Gun angle equals to:"
+                android:text="@string/gun_angle_equals_to"
                 app:layout_constraintBottom_toTopOf="@+id/angle"
                 tools:layout_editor_absoluteX="0dp" />
 
             <Space
                 android:layout_width="0dp"
-                android:layout_height="24dp"></Space>
+                android:layout_height="24dp" />
 
             <TextView
                 android:id="@+id/angle"

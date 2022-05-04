@@ -1,8 +1,7 @@
 package com.example.skullwarrior
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
+import androidx.appcompat.app.AppCompatActivity
 import com.example.skullwarrior.adapters.ViewPagerAdapter
 import com.example.skullwarrior.databinding.ActivityMainBinding
 import com.example.skullwarrior.gunangle.GunAngleFragment

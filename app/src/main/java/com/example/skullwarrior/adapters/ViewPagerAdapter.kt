@@ -1,9 +1,10 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.skullwarrior.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.transition.FragmentTransitionSupport
 
 class ViewPagerAdapter(supportFragmentManager: FragmentManager): FragmentPagerAdapter(supportFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     private val mFragmentList = ArrayList<Fragment>()
@@ -18,7 +19,7 @@ class ViewPagerAdapter(supportFragmentManager: FragmentManager): FragmentPagerAd
         return mFragmentList[position]
     }
 
-    override fun getPageTitle(position: Int): CharSequence? {
+    override fun getPageTitle(position: Int): CharSequence {
         return mFragmentTitleList[position]
     }
 

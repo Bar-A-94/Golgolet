@@ -5,5 +5,11 @@
     <string name="velocity">*Velocity can written in Mach or Knots</string>
     <string name="altitude">*Altitude required only in Mach case</string>
     <string name="gun_degrees">%d degrees</string>
+    <string name="gun_angle_equals_to">Gun angle equals to:</string>
+    <string name="calculate">Calculate!</string>
+    <string name="altitude_feet">Altitude (feet)</string>
+    <string name="closing_speed_knots">Closing speed (knots)</string>
+    <string name="victim_velocity">Victim velocity</string>
+    <string name="shooter_velocity">Shooter velocity</string>
 
 </resources>

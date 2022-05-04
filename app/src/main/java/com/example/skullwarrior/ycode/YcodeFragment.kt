@@ -1,15 +1,11 @@
 package com.example.skullwarrior.ycode
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.DataBindingUtil.bind
-import androidx.databinding.DataBindingUtil.setContentView
-import com.example.skullwarrior.R
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.skullwarrior.databinding.YcodeFragmentBinding
 
 class YcodeFragment : Fragment() {
@@ -23,10 +19,10 @@ class YcodeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = YcodeFragmentBinding.inflate(layoutInflater)
-        binding.setLifecycleOwner(this)
-        viewModel = ViewModelProvider(this).get(YcodeViewModel::class.java)
+        binding.lifecycleOwner = this
+        viewModel = ViewModelProvider(this)[YcodeViewModel::class.java]
         binding.ycodeViewModel = viewModel
         return binding.root
     }
