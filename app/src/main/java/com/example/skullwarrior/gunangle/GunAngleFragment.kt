@@ -33,7 +33,8 @@ class GunAngleFragment : Fragment() {
         }
 
         binding.button.setOnClickListener {
-            if (binding.shooterVelocityInput.text.toString() == "" || binding.victimVelocityInput.text.toString() == ""
+            if (binding.shooterVelocityInput.text.toString() == ""
+                || binding.victimVelocityInput.text.toString() == ""
                 || binding.closingVelocityInput.text.toString() == "")
             {
                 Toast.makeText(context,"Please fill in the data",Toast.LENGTH_SHORT).show()

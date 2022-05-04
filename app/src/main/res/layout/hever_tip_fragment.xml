@@ -90,8 +90,20 @@
             app:layout_constraintTop_toBottomOf="@+id/num_of_payers"
             tools:ignore="Autofill,LabelFor" />
 
+        <Button
+            android:id="@+id/button"
+            style="@style/TabStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/calculate"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/num_of_payers_input" />
+
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -99,188 +111,65 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/num_of_payers_input">
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="20dp" />
-
-            <Button
-                android:id="@+id/button"
-                style="@style/TabStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/calculate"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/altitude_input" />
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="20dp" />
-
             <TextView
                 android:id="@+id/tip_amount"
                 style="@style/InsideStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/tip_amount"
+                android:visibility="invisible"
                 tools:layout_editor_absoluteX="0dp" />
 
             <TextView
-                android:id="@+id/credit"
+                android:id="@+id/tip_amount_output"
                 style="@style/InsideStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 tools:layout_editor_absoluteX="0dp" />
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
             <TextView
-                android:id="@+id/amount_to_pay_per_type"
+                android:id="@+id/paying_with_hever"
                 style="@style/InsideStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/amount_to_pay_per_type"
+                android:text="@{@string/paying_with_hever(heverTipViewModel.hevers, heverTipViewModel.perHever)}"
+                android:visibility="invisible"
                 tools:layout_editor_absoluteX="0dp" />
 
-            <LinearLayout
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:baselineAligned="false">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/hever"
-                        style="@style/InsideStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/hever"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        tools:layout_editor_absoluteX="0dp" />
-
-                    <TextView
-                        android:id="@+id/per_hever"
-                        style="@style/InsideStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        tools:layout_editor_absoluteX="0dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/card"
-                        style="@style/InsideStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/card"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        tools:layout_editor_absoluteX="0dp" />
-
-                    <TextView
-                        android:id="@+id/per_card"
-                        style="@style/InsideStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        tools:layout_editor_absoluteX="0dp" />
-                </LinearLayout>
-            </LinearLayout>
-
+                android:layout_height="20dp" />
 
             <TextView
-                android:id="@+id/num_of_non_hever"
+                android:id="@+id/splitter"
                 style="@style/InsideStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/number_of_non_hever_payers"
+                android:text="@{@string/splitter(heverTipViewModel.cardSplit, heverTipViewModel.heverSplit)}"
+                android:visibility="invisible"
                 tools:layout_editor_absoluteX="0dp" />
 
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
             <TextView
-                android:id="@+id/non_hever"
+                android:id="@+id/paying_with_credit"
                 style="@style/InsideStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@{@string/paying_with_credit(heverTipViewModel.nonHever, heverTipViewModel.perCard)}"
+                android:visibility="invisible"
                 tools:layout_editor_absoluteX="0dp" />
-
-            <TextView
-                android:id="@+id/split_for_mixed"
-                style="@style/InsideStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/split_for_the_mixed_payment"
-                tools:layout_editor_absoluteX="0dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:baselineAligned="false">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/hever_split"
-                        style="@style/InsideStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/hever"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        tools:layout_editor_absoluteX="0dp" />
-
-                    <TextView
-                        android:id="@+id/hever_split_output"
-                        style="@style/InsideStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        tools:layout_editor_absoluteX="0dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/card_split"
-                        style="@style/InsideStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/card"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        tools:layout_editor_absoluteX="0dp" />
-
-                    <TextView
-                        android:id="@+id/card_split_output"
-                        style="@style/InsideStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        tools:layout_editor_absoluteX="0dp" />
-                </LinearLayout>
-            </LinearLayout>
-
         </LinearLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

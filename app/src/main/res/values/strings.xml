@@ -12,12 +12,10 @@
     <string name="shooter_velocity">Shooter velocity</string>
     <string name="amount_to_pay">Amount to pay (ILS)</string>
     <string name="tip_percents">Tip percents (%)</string>
-    <string name="number_of_non_hever_payers">Number of non-Hever payers:</string>
-    <string name="amount_to_pay_per_type">Amount to pay per typer:</string>
     <string name="tip_amount">Tip amount:</string>
     <string name="number_of_payers">Number of payers</string>
-    <string name="split_for_the_mixed_payment">Split for the mixed payment:</string>
-    <string name="hever">Hever</string>
-    <string name="card">Card</string>
+    <string name="paying_with_credit">%s paying with credit: %s</string>
+    <string name="splitter">Splitter - credit: %s, Hever %s</string>
+    <string name="paying_with_hever">%s paying with Hever: %s</string>
 
 </resources>
