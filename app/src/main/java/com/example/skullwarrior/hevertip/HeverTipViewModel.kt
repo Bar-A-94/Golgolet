@@ -35,7 +35,6 @@ class HeverTipViewModel : ViewModel() {
         val tipInt: Int = (amount * tipPercents / 100)
         val total: Int = (amount * 0.7 + tipInt).toInt()
         var per: Int = total / numOfPayers
-        if (total % numOfPayers != 0) { per = per + 1}
         val nonHeverInt: Int = tipInt / per
         val splitter = (tipInt % per != 0).toInt()
 

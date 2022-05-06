@@ -1,13 +1,14 @@
 package com.example.skullwarrior.hevertip
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.skullwarrior.R
 import com.example.skullwarrior.databinding.HeverTipFragmentBinding
 
 class HeverTipFragment : Fragment() {
@@ -55,10 +56,14 @@ class HeverTipFragment : Fragment() {
                     binding.splitter.visibility = View.INVISIBLE
                 }
             }
+            view?.hideKeyboard()
 
         }
         return binding.root
     }
 
-
+    private fun View.hideKeyboard() {
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(windowToken, 0)
+    }
 }
