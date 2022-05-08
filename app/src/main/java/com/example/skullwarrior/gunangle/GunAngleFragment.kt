@@ -22,43 +22,40 @@ class GunAngleFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        // preset altitude, used if there is no altitude input
         var altitude = 12000F
         binding = GunAngleFragmentBinding.inflate(layoutInflater)
         binding.lifecycleOwner = this
         viewModel = ViewModelProvider(this)[GunAngleViewModel::class.java]
         binding.gunAngleViewModel = viewModel
 
-        viewModel.angle.observe(viewLifecycleOwner) {
-            if (it != null) {
-                binding.angle.text = it
-            }
-        }
-
         binding.button.setOnClickListener {
+            // Make sure there is input to make the action
             if (binding.shooterVelocityInput.text.toString() == ""
                 || binding.victimVelocityInput.text.toString() == ""
                 || binding.closingVelocityInput.text.toString() == ""
-            ) {
-                Toast.makeText(context, "Please fill in the data", Toast.LENGTH_SHORT).show()
-            } else {
-                if (binding.altitudeInput.text.toString() != "") {
+            ) Toast.makeText(context, "Please fill in the data", Toast.LENGTH_SHORT).show()
+            else {
+                // check if there is altitude for the input
+                if (binding.altitudeInput.text.toString() != "")
                     altitude = binding.altitudeInput.text.toString().toFloat()
-                }
                 val shooterSpeed = binding.shooterVelocityInput.text.toString().toFloat()
                 val victimSpeed = binding.victimVelocityInput.text.toString().toFloat()
                 val closingSpeed = binding.closingVelocityInput.text.toString().toFloat()
                 viewModel.onClickCalculate(shooterSpeed, victimSpeed, altitude, closingSpeed)
-                if (binding.angle.text.toString().toFloat() > 90) {
+                // Pop up a message according to the angle
+                if (binding.angle.text.toString().toFloat() > 90)
                     Toast.makeText(context, "תותח מעל 90 עדיין פוגע", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(context, "בדקת גם את הטווח?", Toast.LENGTH_SHORT).show()
-                }
+                else Toast.makeText(context, "בדקת גם את הטווח?", Toast.LENGTH_SHORT).show()
             }
             view?.hideKeyboard()
         }
         return binding.root
     }
 
+    /**
+     * Hide the keyboard if there is one open
+     */
     private fun View.hideKeyboard() {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(windowToken, 0)

@@ -24,6 +24,8 @@ class YcodeViewModel : ViewModel() {
 
     private var timer: CountDownTimer
 
+    // Set variables for texts in the fragment
+
     private val _currentTime = MutableLiveData<Long>()
     private val currentTime: LiveData<Long>
         get() = _currentTime
@@ -45,6 +47,7 @@ class YcodeViewModel : ViewModel() {
     }
 
     init {
+        // find the next pulse and start a counter to it, once it ended start a new 12:30 timer
         val first = 750000 - (System.currentTimeMillis() - 1640995005000L) % 750000
         timer = object : CountDownTimer(first, ONE_SECOND) {
             override fun onTick(millisUntilFinished: Long) {
@@ -59,6 +62,9 @@ class YcodeViewModel : ViewModel() {
         timer.start()
     }
 
+    /**
+     * cancel the current timer and start a new one with 12:30 minutes
+     */
     private fun timeReset() {
         timer.cancel()
         timer = object : CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
@@ -79,18 +85,27 @@ class YcodeViewModel : ViewModel() {
         timer.cancel()
     }
 
-    fun onClickCalculate(hours: Long, minutes: Long){
+    /**
+     * When calculate pressed, the function takes a time and find
+     * the nearest pulses (before and after)
+     */
+    fun onClickCalculate(hours: Long, minutes: Long) {
+        // Set the strings for the return
         val beforeMinutesString: String
         val beforeHoursString: String
         val afterMinutesString: String
         val afterHoursString: String
+        // Add 0 to numbers that are below 10 for better visual
         val minutesString: String = if (minutes < 10) "0$minutes" else minutes.toString()
         val hoursString: String = if (hours < 10) "0$hours" else hours.toString()
         _originalPlan.value = "$hoursString:$minutesString"
 
+        // difference from the pulse before in seconds
         val diffFromPrevious = timeDifference(hours, minutes) / 1000
+        // split to minutes and seconds
         val minutesFromPrevious = diffFromPrevious / 60
         val secondsFromPrevious = diffFromPrevious % 60
+        // calculate the time subtracting the difference from the input time
         var beforeMinutes = minutes - minutesFromPrevious - 1
         var beforeHours = hours
         val beforeSeconds = 60 - secondsFromPrevious
@@ -99,40 +114,48 @@ class YcodeViewModel : ViewModel() {
             beforeHours -= 1
             if (beforeHours < 0) beforeHours += 24
         }
-
+        // Add 0 to numbers that are below 10 for better visual
         beforeMinutesString = if (beforeMinutes < 10) "0$beforeMinutes" else beforeMinutes.toString()
         beforeHoursString = if (beforeHours < 10) "0$beforeHours" else beforeHours.toString()
-
         _beforePlan.value = "$beforeHoursString:$beforeMinutesString:$beforeSeconds"
 
+        // calculate the time for the next pulse according to the time from the previous
         var secondsToNext = 30 - secondsFromPrevious
         var minutesToNext = 12 - minutesFromPrevious
         if (secondsToNext < 0) {
             secondsToNext += 60
             minutesToNext -= 1
         }
+        // calculate the time adding the difference from the input time
         val afterMinutes = (minutes + minutesToNext) % 60
         val afterHours = (hours + (minutes + minutesToNext) / 60) % 24
-
+        // Add 0 to numbers that are below 10 for better visual
         afterMinutesString = if (afterMinutes < 10) "0$afterMinutes" else afterMinutes.toString()
         afterHoursString = if (afterHours < 10) "0$afterHours" else afterHours.toString()
-
-
         _afterPlan.value = "$afterHoursString:$afterMinutesString:$secondsToNext"
     }
 
+    /**
+     * Find the time difference from hours:minutes to the pulse before it
+     * The function find the time difference from the next pulse and the reminder from 12:30 minutes
+     * diff is the difference in milliseconds
+     */
     private fun timeDifference(hours: Long, minutes: Long): Long {
-        val next =  750000 - (System.currentTimeMillis() - 1640995005000L) % 750000 + System.currentTimeMillis()
+        val next =
+            750000 - (System.currentTimeMillis() - 1640995005000L) % 750000 + System.currentTimeMillis()
         val nextArray = stringToDateComponents(convertLongToDateString(next))
 
-        val diff = if (hours < nextArray[0] ||hours == nextArray[0] && minutes < nextArray[1]){
+        val diff = if (hours < nextArray[0] || hours == nextArray[0] && minutes < nextArray[1]) {
             (24 + hours) * 60 * 60 + minutes * 60 - nextArray[0] * 60 * 60 - nextArray[1] * 60 - nextArray[2]
-        } else{
+        } else {
             hours * 60 * 60 + minutes * 60 - nextArray[0] * 60 * 60 - nextArray[1] * 60 - nextArray[2]
         }
         return diff * 1000 % 750000
     }
 
+    /**
+     * Takes a date string from the format "HH:mm:ss ..." and split it to [HH, mm, ss]
+     */
     private fun stringToDateComponents(string: String): List<Long> {
         return listOf(
             string.subSequence(0, 2).toString().toLong(),
@@ -142,9 +165,12 @@ class YcodeViewModel : ViewModel() {
     }
 
 
+    /**
+     * Takes Long of milliseconds and convert it to time according to Israel time zone
+     */
     @SuppressLint("SimpleDateFormat")
     fun convertLongToDateString(systemTime: Long): String {
-        val sdf =  SimpleDateFormat("HH:mm:ss")
+        val sdf = SimpleDateFormat("HH:mm:ss")
         sdf.timeZone = TimeZone.getTimeZone("Asia/Jerusalem")
         return sdf.format(systemTime).toString()
     }

@@ -29,16 +29,25 @@ class YcodeFragment : Fragment() {
         binding.lifecycleOwner = this
         viewModel = ViewModelProvider(this)[YcodeViewModel::class.java]
         binding.ycodeViewModel = viewModel
-        binding.button.setOnClickListener{
+        binding.button.setOnClickListener {
+            // Make sure there is input to make the action
             if (binding.hours.text.toString() == "" ||
-                    binding.minutes.text.toString() == "") {
-                Toast.makeText(context,"Please fill in the data", Toast.LENGTH_SHORT).show()
+                binding.minutes.text.toString() == ""
+            ) {
+                Toast.makeText(context, "Please fill in the data", Toast.LENGTH_SHORT).show()
             } else {
-                if (binding.hours.text.toString().toInt() > 23 || binding.minutes.text.toString().toInt() > 59) {
-                    Toast.makeText(context,"Plan time doesn't make sense", Toast.LENGTH_SHORT).show()
-                }
-                else {
-                    viewModel.onClickCalculate(binding.hours.text.toString().toLong(), binding.minutes.text.toString().toLong())
+                // Make sure the input is in hours, minutes format
+                if (binding.hours.text.toString().toInt() > 23 || binding.minutes.text.toString()
+                        .toInt() > 59
+                ) {
+                    Toast.makeText(context, "Plan time doesn't make sense", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    viewModel.onClickCalculate(
+                        binding.hours.text.toString().toLong(),
+                        binding.minutes.text.toString().toLong()
+                    )
+                    // Set output to be visible
                     binding.plannerAfter.visibility = View.VISIBLE
                     binding.plannerBefore.visibility = View.VISIBLE
                     binding.original.visibility = View.VISIBLE
@@ -48,6 +57,10 @@ class YcodeFragment : Fragment() {
         }
         return binding.root
     }
+
+    /**
+     * Hide the keyboard if there is one open
+     */
     private fun View.hideKeyboard() {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(windowToken, 0)

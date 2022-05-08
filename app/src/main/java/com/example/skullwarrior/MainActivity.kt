@@ -21,6 +21,9 @@ class MainActivity : AppCompatActivity() {
         setUpTab()
     }
 
+    /**
+     * Set up the tabs, tabs titles and their fragments
+     */
     private fun setUpTab(){
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(YcodeFragment(), "Y-Code")

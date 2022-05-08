@@ -27,41 +27,40 @@ class HeverTipFragment : Fragment() {
         viewModel = ViewModelProvider(this)[HeverTipViewModel::class.java]
         binding.heverTipViewModel = viewModel
 
-        viewModel.tip.observe(viewLifecycleOwner) {
-            if (it != null) {
-                binding.tipAmountOutput.text = it
-            }
-        }
-
         binding.button.setOnClickListener {
+            // Make sure there is input to make the action
             if (binding.amountToPayInput.text.toString() == ""
                 || binding.tipPercentsInput.text.toString() == ""
-                || binding.numOfPayersInput.text.toString() == "") {
-                Toast.makeText(context,"Please fill in the data", Toast.LENGTH_SHORT).show()
+                || binding.numOfPayersInput.text.toString() == ""
+            ) {
+                Toast.makeText(context, "Please fill in the data", Toast.LENGTH_SHORT).show()
             } else {
                 val amount = binding.amountToPayInput.text.toString().toInt()
                 val tipPercents = binding.tipPercentsInput.text.toString().toInt()
                 val numOfPayers = binding.numOfPayersInput.text.toString().toInt()
                 val arr = viewModel.onClickCalculate(amount, tipPercents, numOfPayers)
+                // Set output to be visible
                 binding.payingWithHever.visibility = View.VISIBLE
                 binding.tipAmount.visibility = View.VISIBLE
                 if (arr[0]) {
                     binding.payingWithCredit.visibility = View.VISIBLE
-                } else{
+                } else {
                     binding.payingWithCredit.visibility = View.INVISIBLE
                 }
                 if (arr[1]) {
                     binding.splitter.visibility = View.VISIBLE
-                } else{
+                } else {
                     binding.splitter.visibility = View.INVISIBLE
                 }
             }
             view?.hideKeyboard()
-
         }
         return binding.root
     }
 
+    /**
+     * Hide the keyboard if there is one open
+     */
     private fun View.hideKeyboard() {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(windowToken, 0)
