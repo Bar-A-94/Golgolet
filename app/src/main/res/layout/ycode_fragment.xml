@@ -13,23 +13,135 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="visible"
         tools:context=".ycode.YcodeFragment">
 
+
         <TextView
+            android:id="@+id/textView2"
             style="@style/InsideStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="@string/y_code_introduction"
-            app:layout_constraintBottom_toTopOf="@id/y_code_counter" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/y_code_counter"
             style="@style/InsideStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="@{ycodeViewModel.currentTimeString}"
             android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            tools:layout_editor_absoluteX="-35dp" />
+
+        <TextView
+            android:id="@+id/Planner"
+            style="@style/InsideStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="42dp"
+            android:text="@string/plan_your_pulse"
+            app:layout_constraintTop_toBottomOf="@+id/y_code_counter"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/planner_note"
+            style="@style/InsideStyle"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/plan_note"
+            app:layout_constraintTop_toBottomOf="@+id/Planner"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <EditText
+            android:id="@+id/hours"
+            style="@style/InsideStyle"
+            android:layout_width="79dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="24dp"
+            android:autofillHints="08"
+            android:ems="10"
+            android:inputType="number"
+            android:text="@string/hours_hint"
+            app:layout_constraintEnd_toStartOf="@+id/dot"
+            app:layout_constraintTop_toBottomOf="@+id/planner_note"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/minutes"
+            style="@style/InsideStyle"
+            android:layout_width="79dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="24dp"
+            android:autofillHints=":"
+            android:ems="10"
+            android:inputType="number"
+            android:text="@string/minutes_hint"
+            app:layout_constraintStart_toEndOf="@+id/dot"
+            app:layout_constraintTop_toBottomOf="@+id/planner_note"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:id="@+id/dot"
+            style="@style/InsideStyle"
+            android:layout_width="32dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/dotim"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/planner_note" />
+
+        <Button
+            android:id="@+id/button"
+            style="@style/TabStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="@string/calculate"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dot" />
+
+        <TextView
+            android:id="@+id/planner_after"
+            style="@style/InsideStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="@{@string/the_pulse_after_in_s(ycodeViewModel.afterPlan)}"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@+id/button"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/planner_before"
+            style="@style/InsideStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="@{@string/the_pulse_before_in_s(ycodeViewModel.beforePlan)}"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@+id/planner_after"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/original"
+            style="@style/InsideStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="@{@string/original_time(ycodeViewModel.originalPlan)}"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@+id/planner_before"
+            tools:layout_editor_absoluteX="0dp" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

@@ -1,12 +1,17 @@
 package com.example.skullwarrior.ycode
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.skullwarrior.databinding.YcodeFragmentBinding
+import java.text.SimpleDateFormat
 
 class YcodeFragment : Fragment() {
 
@@ -24,6 +29,30 @@ class YcodeFragment : Fragment() {
         binding.lifecycleOwner = this
         viewModel = ViewModelProvider(this)[YcodeViewModel::class.java]
         binding.ycodeViewModel = viewModel
+        binding.button.setOnClickListener{
+            if (binding.hours.text.toString() == "" ||
+                    binding.minutes.text.toString() == "") {
+                Toast.makeText(context,"Please fill in the data", Toast.LENGTH_SHORT).show()
+            } else {
+                if (binding.hours.text.toString().toInt() > 23 || binding.minutes.text.toString().toInt() > 59) {
+                    Toast.makeText(context,"Plan time doesn't make sense", Toast.LENGTH_SHORT).show()
+                }
+                else {
+                    viewModel.onClickCalculate(binding.hours.text.toString().toLong(), binding.minutes.text.toString().toLong())
+                    binding.plannerAfter.visibility = View.VISIBLE
+                    binding.plannerBefore.visibility = View.VISIBLE
+                    binding.original.visibility = View.VISIBLE
+                }
+            }
+            view?.hideKeyboard()
+        }
         return binding.root
     }
+    private fun View.hideKeyboard() {
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(windowToken, 0)
+    }
+
 }
+
+

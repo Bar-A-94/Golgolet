@@ -17,5 +17,13 @@
     <string name="paying_with_credit">%s paying with credit: %s</string>
     <string name="splitter">Splitter - credit: %s, Hever %s</string>
     <string name="paying_with_hever">%s paying with Hever: %s</string>
+    <string name="plan_your_pulse">Plan your pulse</string>
+    <string name="the_pulse_after_in_s">The pulse after is in: %s</string>
+    <string name="the_pulse_before_in_s">The pulse before is in: %s</string>
+    <string name="hours_hint">08</string>
+    <string name="minutes_hint">00</string>
+    <string name="dotim">:</string>
+    <string name="original_time">According to time: %s</string>
+    <string name="plan_note">**From the start of the next pulse for 24 hours</string>
 
 </resources>

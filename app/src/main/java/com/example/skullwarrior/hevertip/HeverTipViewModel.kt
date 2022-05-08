@@ -34,7 +34,7 @@ class HeverTipViewModel : ViewModel() {
     fun onClickCalculate(amount: Int, tipPercents: Int, numOfPayers: Int): List<Boolean> {
         val tipInt: Int = (amount * tipPercents / 100)
         val total: Int = (amount * 0.7 + tipInt).toInt()
-        var per: Int = total / numOfPayers
+        val per: Int = total / numOfPayers
         val nonHeverInt: Int = tipInt / per
         val splitter = (tipInt % per != 0).toInt()
 
@@ -43,7 +43,7 @@ class HeverTipViewModel : ViewModel() {
         _perCard.value = per.toString()
         _nonHever.value = nonHeverInt.toString()
         _hevers.value = (numOfPayers - nonHeverInt - splitter).toString()
-        _heverSplit.value = (amount - (numOfPayers - nonHeverInt - splitter) * (per * 10 / 7).toInt()).toString()
+        _heverSplit.value = (amount - (numOfPayers - nonHeverInt - splitter) * (per * 10 / 7)).toString()
         _cardSplit.value = (tipInt % per).toString()
 
         return listOf(nonHeverInt.toBoolean(), splitter.toBoolean())
