@@ -28,7 +28,7 @@ class GunAngleViewModel : ViewModel() {
         victimSpeed: Float,
         altitude: Float,
         closingSpeed: Float
-    ) {
+    ): Boolean {
         // find TAS for the shooter
         tasShooterSpeed = if (shooterSpeed < 2) {
             shooterSpeed * 630
@@ -45,5 +45,6 @@ class GunAngleViewModel : ViewModel() {
         val aCosInside: Float = (closingSpeed - tasShooterSpeed) / tasVictimSpeed
         val rad = acos(aCosInside)
         _angle.value = (round((180 - rad * 180 / PI) * 100) / 100).toString()
+        return ((round((180 - rad * 180 / PI) * 100) / 100) > 90)
     }
 }

@@ -158,6 +158,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/gun_angle_equals_to"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toTopOf="@+id/angle"
                 tools:layout_editor_absoluteX="0dp" />
 
@@ -170,8 +171,8 @@
                 style="@style/InsideStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="invisible"
                 android:text="@{gunAngleViewModel.angle}"
-                android:enabled="@{gunAngleViewModel.angleVisible}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 tools:layout_editor_absoluteX="0dp" />
         </LinearLayout>

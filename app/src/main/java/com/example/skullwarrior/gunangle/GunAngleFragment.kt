@@ -42,9 +42,12 @@ class GunAngleFragment : Fragment() {
                 val shooterSpeed = binding.shooterVelocityInput.text.toString().toFloat()
                 val victimSpeed = binding.victimVelocityInput.text.toString().toFloat()
                 val closingSpeed = binding.closingVelocityInput.text.toString().toFloat()
-                viewModel.onClickCalculate(shooterSpeed, victimSpeed, altitude, closingSpeed)
+                val above = viewModel.onClickCalculate(shooterSpeed, victimSpeed, altitude, closingSpeed)
+                // Make output visible
+                binding.angleIntro.visibility = View.VISIBLE
+                binding.angle.visibility = View.VISIBLE
                 // Pop up a message according to the angle
-                if (binding.angle.text.toString().toFloat() > 90)
+                if (above)
                     Toast.makeText(context, "תותח מעל 90 עדיין פוגע", Toast.LENGTH_SHORT).show()
                 else Toast.makeText(context, "בדקת גם את הטווח?", Toast.LENGTH_SHORT).show()
             }
