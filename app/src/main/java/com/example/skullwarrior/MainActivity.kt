@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.appBar)
-
         setUpTab()
     }
 
@@ -31,8 +30,6 @@ class MainActivity : AppCompatActivity() {
         adapter.addFragment(HeverTipFragment(), "Hever Tip")
         binding.viewPager.adapter = adapter
         binding.tabs.setupWithViewPager(binding.viewPager)
-
-
 
     }
 }

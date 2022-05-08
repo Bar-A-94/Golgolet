@@ -42,6 +42,7 @@ class HeverTipFragment : Fragment() {
                 // Set output to be visible
                 binding.payingWithHever.visibility = View.VISIBLE
                 binding.tipAmount.visibility = View.VISIBLE
+                binding.tipAmountOutput.visibility = View.VISIBLE
                 if (arr[0]) {
                     binding.payingWithCredit.visibility = View.VISIBLE
                 } else {
