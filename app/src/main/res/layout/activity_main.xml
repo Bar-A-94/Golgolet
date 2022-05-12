@@ -33,13 +33,14 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#000000"
             app:tabBackground="@color/black"
-            app:tabGravity="fill"
+            app:tabGravity="center"
+            app:tabIndicatorColor="@color/white"
             app:tabInlineLabel="false"
-            app:tabMode="fixed"
-            app:tabTextColor="@color/white"
+            app:tabMode="scrollable"
             app:tabTextAppearance="@style/TabStyle"
-            app:tabIndicatorColor="@color/white" />
+            app:tabTextColor="@color/white" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager

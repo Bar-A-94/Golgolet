@@ -25,5 +25,7 @@
     <string name="dotim">:</string>
     <string name="original_time">According to time: %s</string>
     <string name="plan_note">**From the start of the next pulse for 24 hours</string>
-
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="contact">Contact info: balon94@gmail.com</string>
+    <string name="about">This app was created for improving the life of the squadron\'s workforce \n \n If you faced a bug in the app please make a screen shot and send it via email \n \n You are welcome to contact via email and send your suggestions for improvement</string>
 </resources>

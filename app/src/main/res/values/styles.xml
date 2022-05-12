@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/black</item>
@@ -8,16 +8,20 @@
     </style>
 
     <style name="TabStyle">
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
     <style name="BarStyle">
-        <item name="android:textSize">40dp</item>
+        <item name="android:textSize">40sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
     <style name="InsideStyle">
-        <item name="android:textSize">24dp</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textAlignment">center</item>
+    </style>
+    <style name="AboutStyle">
+        <item name="android:textSize" tools:ignore="SpUsage">24dp</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>

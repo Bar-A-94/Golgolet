@@ -2,6 +2,7 @@ package com.example.skullwarrior
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.skullwarrior.about.AboutEnglishFragment
 import com.example.skullwarrior.adapters.ViewPagerAdapter
 import com.example.skullwarrior.databinding.ActivityMainBinding
 import com.example.skullwarrior.gunangle.GunAngleFragment
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         adapter.addFragment(YcodeFragment(), "Y-Code")
         adapter.addFragment(GunAngleFragment(), "Gun Angle")
         adapter.addFragment(HeverTipFragment(), "Hever Tip")
+        adapter.addFragment(AboutEnglishFragment(), "About")
         binding.viewPager.adapter = adapter
         binding.tabs.setupWithViewPager(binding.viewPager)
 

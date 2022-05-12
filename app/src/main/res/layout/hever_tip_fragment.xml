@@ -10,170 +10,177 @@
             type="com.example.skullwarrior.hevertip.HeverTipViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".hevertip.HeverTipFragment">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/hever_tip_introduction"
-            style="@style/InsideStyle"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/introduction"
-            android:textSize="30sp"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/amount_to_pay"
-            style="@style/InsideStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/amount_to_pay"
-            app:layout_constraintTop_toBottomOf="@+id/hever_tip_introduction" />
-
-        <EditText
-            android:id="@+id/amount_to_pay_input"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="number"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/amount_to_pay"
-            tools:ignore="Autofill,LabelFor" />
-
-        <TextView
-            android:id="@+id/tip_percents"
-            style="@style/InsideStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tip_percents"
-            app:layout_constraintEnd_toStartOf="@+id/num_of_payers"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/amount_to_pay_input" />
-
-        <EditText
-            android:id="@+id/tip_percents_input"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:ems="7"
-            android:inputType="number"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="@+id/tip_percents"
-            app:layout_constraintStart_toStartOf="@+id/tip_percents"
-            app:layout_constraintTop_toBottomOf="@+id/tip_percents"
-            tools:ignore="Autofill,LabelFor" />
-
-        <TextView
-            android:id="@+id/num_of_payers"
-            style="@style/InsideStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/number_of_payers"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tip_percents"
-            app:layout_constraintTop_toBottomOf="@+id/amount_to_pay_input" />
-
-        <EditText
-            android:id="@+id/num_of_payers_input"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="7"
-            android:inputType="number"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="@+id/num_of_payers"
-            app:layout_constraintStart_toStartOf="@+id/num_of_payers"
-            app:layout_constraintTop_toBottomOf="@+id/num_of_payers"
-            tools:ignore="Autofill,LabelFor" />
-
-        <Button
-            android:id="@+id/button"
-            style="@style/TabStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/calculate"
-            android:textAllCaps="false"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/num_of_payers_input" />
-
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/num_of_payers_input">
+            android:layout_height="match_parent"
+            tools:context=".hevertip.HeverTipFragment"
+            tools:ignore="ScrollViewSize">
 
             <TextView
-                android:id="@+id/tip_amount"
+                android:id="@+id/hever_tip_introduction"
                 style="@style/InsideStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/tip_amount"
-                android:visibility="invisible"
-                tools:layout_editor_absoluteX="0dp" />
+                android:layout_marginTop="16dp"
+                android:text="@string/introduction"
+                android:textSize="30sp"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tip_amount_output"
+                android:id="@+id/amount_to_pay"
                 style="@style/InsideStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{heverTipViewModel.tip}"
-                android:visibility="invisible"
+                android:text="@string/amount_to_pay"
+                app:layout_constraintTop_toBottomOf="@+id/hever_tip_introduction" />
+
+            <EditText
+                android:id="@+id/amount_to_pay_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/amount_to_pay"
+                tools:ignore="Autofill,LabelFor" />
+
+            <TextView
+                android:id="@+id/tip_percents"
+                style="@style/InsideStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tip_percents"
+                app:layout_constraintEnd_toStartOf="@+id/num_of_payers"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/amount_to_pay_input" />
+
+            <EditText
+                android:id="@+id/tip_percents_input"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:ems="7"
+                android:inputType="number"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="@+id/tip_percents"
+                app:layout_constraintStart_toStartOf="@+id/tip_percents"
+                app:layout_constraintTop_toBottomOf="@+id/tip_percents"
+                tools:ignore="Autofill,LabelFor" />
+
+            <TextView
+                android:id="@+id/num_of_payers"
+                style="@style/InsideStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/number_of_payers"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tip_percents"
+                app:layout_constraintTop_toBottomOf="@+id/amount_to_pay_input" />
+
+            <EditText
+                android:id="@+id/num_of_payers_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="7"
+                android:inputType="number"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="@+id/num_of_payers"
+                app:layout_constraintStart_toStartOf="@+id/num_of_payers"
+                app:layout_constraintTop_toBottomOf="@+id/num_of_payers"
+                tools:ignore="Autofill,LabelFor" />
+
+            <Button
+                android:id="@+id/button"
+                style="@style/TabStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/calculate"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/num_of_payers_input" />
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:layout_editor_absoluteX="0dp" />
+                app:layout_constraintTop_toBottomOf="@id/num_of_payers_input">
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                <TextView
+                    android:id="@+id/tip_amount"
+                    style="@style/InsideStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tip_amount"
+                    android:visibility="invisible"
+                    tools:layout_editor_absoluteX="0dp" />
 
-            <TextView
-                android:id="@+id/paying_with_hever"
-                style="@style/InsideStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{@string/paying_with_hever(heverTipViewModel.hevers, heverTipViewModel.perHever)}"
-                android:visibility="invisible"
-                tools:layout_editor_absoluteX="0dp" />
+                <TextView
+                    android:id="@+id/tip_amount_output"
+                    style="@style/InsideStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{heverTipViewModel.tip}"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:layout_editor_absoluteX="0dp" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
 
-            <TextView
-                android:id="@+id/splitter"
-                style="@style/InsideStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{@string/splitter(heverTipViewModel.cardSplit, heverTipViewModel.heverSplit)}"
-                android:visibility="invisible"
-                tools:layout_editor_absoluteX="0dp" />
+                <TextView
+                    android:id="@+id/paying_with_hever"
+                    style="@style/InsideStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/paying_with_hever(heverTipViewModel.hevers, heverTipViewModel.perHever)}"
+                    android:visibility="invisible"
+                    tools:layout_editor_absoluteX="0dp" />
 
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-
-            <TextView
-                android:id="@+id/paying_with_credit"
-                style="@style/InsideStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{@string/paying_with_credit(heverTipViewModel.nonHever, heverTipViewModel.perCard)}"
-                android:visibility="invisible"
-                tools:layout_editor_absoluteX="0dp" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/splitter"
+                    style="@style/InsideStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/splitter(heverTipViewModel.cardSplit, heverTipViewModel.heverSplit)}"
+                    android:visibility="invisible"
+                    tools:layout_editor_absoluteX="0dp" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+                <TextView
+                    android:id="@+id/paying_with_credit"
+                    style="@style/InsideStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/paying_with_credit(heverTipViewModel.nonHever, heverTipViewModel.perCard)}"
+                    android:visibility="invisible"
+                    tools:layout_editor_absoluteX="0dp" />
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 
 </layout>
