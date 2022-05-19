@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layoutDirection="ltr">
 
     <data>
 
@@ -44,13 +45,24 @@
                 tools:layout_editor_absoluteX="-35dp" />
 
             <TextView
+                android:id="@+id/next_pulse"
+                style="@style/InsideStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@{ycodeViewModel.nextPulse}"
+                android:textSize="30sp"
+                app:layout_constraintTop_toBottomOf="@+id/y_code_counter"
+                tools:layout_editor_absoluteX="-35dp" />
+
+            <TextView
                 android:id="@+id/Planner"
                 style="@style/InsideStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="42dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/plan_your_pulse"
-                app:layout_constraintTop_toBottomOf="@+id/y_code_counter"
+                app:layout_constraintTop_toBottomOf="@+id/next_pulse"
                 tools:layout_editor_absoluteX="0dp" />
 
             <TextView

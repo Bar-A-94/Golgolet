@@ -18,13 +18,12 @@
             android:layout_marginEnd="16dp"
             android:autoSizeMaxTextSize="36dp"
             android:autoSizeMinTextSize="16dp"
-            android:autoSizeTextType="uniform"
             android:autoSizeStepGranularity="2dp"
+            android:autoSizeTextType="uniform"
             android:text="@string/contact"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:targetApi="o" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             style="@style/AboutStyle"

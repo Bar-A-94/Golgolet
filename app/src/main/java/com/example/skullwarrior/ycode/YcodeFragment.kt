@@ -58,6 +58,11 @@ class YcodeFragment : Fragment() {
         return binding.root
     }
 
+    override fun onStart() {
+        super.onStart()
+        viewModel.reOpen()
+    }
+
     /**
      * Hide the keyboard if there is one open
      */

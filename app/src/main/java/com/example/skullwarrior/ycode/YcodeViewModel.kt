@@ -46,9 +46,14 @@ class YcodeViewModel : ViewModel() {
         DateUtils.formatElapsedTime(time)
     }
 
+    private val _nextPulse = MutableLiveData<String>()
+    val nextPulse: LiveData<String>
+        get() = _nextPulse
+
     init {
         // find the next pulse and start a counter to it, once it ended start a new 12:30 timer
-        val first = 750000 - (System.currentTimeMillis() - 1640995005000L) % 750000
+        val first = 750000L - (System.currentTimeMillis() - 1640994855000L) % 750000L
+        _nextPulse.value = convertLongToDateString(first + System.currentTimeMillis())
         timer = object : CountDownTimer(first, ONE_SECOND) {
             override fun onTick(millisUntilFinished: Long) {
                 _currentTime.value = (millisUntilFinished / ONE_SECOND)
@@ -59,6 +64,21 @@ class YcodeViewModel : ViewModel() {
             }
         }
 
+        timer.start()
+    }
+
+    fun reOpen(){
+        val first = 750000L - (System.currentTimeMillis() - 1640994855000L) % 750000L
+        _nextPulse.value = convertLongToDateString(first + System.currentTimeMillis())
+        timer = object : CountDownTimer(first, ONE_SECOND) {
+            override fun onTick(millisUntilFinished: Long) {
+                _currentTime.value = (millisUntilFinished / ONE_SECOND)
+            }
+
+            override fun onFinish() {
+                timeReset()
+            }
+        }
         timer.start()
     }
 
@@ -141,8 +161,7 @@ class YcodeViewModel : ViewModel() {
      * diff is the difference in milliseconds
      */
     private fun timeDifference(hours: Long, minutes: Long): Long {
-        val next =
-            750000 - (System.currentTimeMillis() - 1640995005000L) % 750000 + System.currentTimeMillis()
+        val next = 750000L - (System.currentTimeMillis() - 1640994855000L) % 750000L + System.currentTimeMillis()
         val nextArray = stringToDateComponents(convertLongToDateString(next))
 
         val diff = if (hours < nextArray[0] || hours == nextArray[0] && minutes < nextArray[1]) {
