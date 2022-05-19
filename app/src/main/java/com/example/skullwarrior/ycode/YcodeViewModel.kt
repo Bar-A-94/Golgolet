@@ -68,6 +68,7 @@ class YcodeViewModel : ViewModel() {
     }
 
     fun reOpen(){
+        timer.cancel()
         val first = 750000L - (System.currentTimeMillis() - 1640994855000L) % 750000L
         _nextPulse.value = convertLongToDateString(first + System.currentTimeMillis())
         timer = object : CountDownTimer(first, ONE_SECOND) {
