@@ -52,7 +52,7 @@ class YcodeViewModel : ViewModel() {
 
     init {
         // find the next pulse and start a counter to it, once it ended start a new 12:30 timer
-        val first = 750000L - (System.currentTimeMillis() - 1640994855000L) % 750000L
+        val first = 750000L - (System.currentTimeMillis() - anchorTime()) % 750000L
         _nextPulse.value = convertLongToDateString(first + System.currentTimeMillis())
         timer = object : CountDownTimer(first, ONE_SECOND) {
             override fun onTick(millisUntilFinished: Long) {
@@ -69,7 +69,7 @@ class YcodeViewModel : ViewModel() {
 
     fun reOpen(){
         timer.cancel()
-        val first = 750000L - (System.currentTimeMillis() - 1640994855000L) % 750000L
+        val first = 750000L - (System.currentTimeMillis() - anchorTime()) % 750000L
         _nextPulse.value = convertLongToDateString(first + System.currentTimeMillis())
         timer = object : CountDownTimer(first, ONE_SECOND) {
             override fun onTick(millisUntilFinished: Long) {
@@ -162,7 +162,7 @@ class YcodeViewModel : ViewModel() {
      * diff is the difference in milliseconds
      */
     private fun timeDifference(hours: Long, minutes: Long): Long {
-        val next = 750000L - (System.currentTimeMillis() - 1640994855000L) % 750000L + System.currentTimeMillis()
+        val next = 750000L - (System.currentTimeMillis() - anchorTime()) % 750000L + System.currentTimeMillis()
         val nextArray = stringToDateComponents(convertLongToDateString(next))
 
         val diff = if (hours < nextArray[0] || hours == nextArray[0] && minutes < nextArray[1]) {
@@ -184,6 +184,22 @@ class YcodeViewModel : ViewModel() {
         )
     }
 
+    private fun anchorTime(): Long{
+        val now: Calendar = Calendar.getInstance()
+        val anchor: Calendar = Calendar.getInstance()
+        anchor.timeZone = TimeZone.getTimeZone("UTC")
+        anchor.set(
+            now[Calendar.YEAR],
+            now[Calendar.MONTH],
+            now[Calendar.DAY_OF_MONTH]
+                    - now[Calendar.DAY_OF_WEEK] + 1,
+            0,
+            9,
+            15
+        )
+        return anchor.timeInMillis
+    }
+
 
     /**
      * Takes Long of milliseconds and convert it to time according to Israel time zone
@@ -194,5 +210,6 @@ class YcodeViewModel : ViewModel() {
         sdf.timeZone = TimeZone.getTimeZone("Asia/Jerusalem")
         return sdf.format(systemTime).toString()
     }
+
 }
 
